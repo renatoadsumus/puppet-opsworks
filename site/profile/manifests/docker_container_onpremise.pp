@@ -7,9 +7,8 @@ class profile::docker_container_onpremise inherits profile::base{
 	
 	::docker::run { 'gocd_server':
 		image   => 'renatoadsumus/gocd:latest',
-		ports   => ['8080:8153'],
+		ports   => ['8153:8153','8154:8154'],
 		require => Docker::Image['renatoadsumus/gocd'],
-  }
-  
+  }  
  
 }
