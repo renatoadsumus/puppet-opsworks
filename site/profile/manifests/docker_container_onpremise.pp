@@ -12,7 +12,7 @@ class profile::docker_container_onpremise inherits profile::base{
 		
 	::docker::run { 'mongodb':
 		image   => 'renatoadsumus/mongodb:latest',
-		ports   => ['2717:2717'],
+		ports   => ['27017:27017'],
 		require => Docker::Image['renatoadsumus/mongodb'],
   }  
  
