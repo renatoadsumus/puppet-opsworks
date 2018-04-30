@@ -8,7 +8,8 @@ class role::server_ci_cd_onpremise {
         ensure => 'directory',					
 	}
 	
-	file {'/etc/firewalld/zones/public_copia.xml':
+	### RESOLVE O PROBLEMA DOCKER - NO ROUTE TO HOST 
+	file {'/etc/firewalld/zones/public.xml':
 			ensure => 'file',
 			path => '/etc/firewalld/zones/public_copia.xml',
 			content => '<?xml version="1.0" encoding="utf-8"?>
@@ -28,4 +29,5 @@ class role::server_ci_cd_onpremise {
 		
 		#https://forums.docker.com/t/no-route-to-host-network-request-from-container-to-host-ip-port-published-from-other-container/39063/5
 		
+		### FALTA O systemctl restart firewalld
 }

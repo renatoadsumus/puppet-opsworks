@@ -39,7 +39,7 @@ node 'infodevops1.ogmaster.local' {
 
 node 'infodevops3.ogmaster.local' {
 
-	include role::server_ci_cd_onpremise
+	#include role::server_ci_cd_onpremise
 
 }
 
