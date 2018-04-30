@@ -3,7 +3,7 @@ class profile::server_ci_cd_aws inherits profile::base{
   include profile::install_docker
   
   exec {'gocd_server':
-        command  => 'docker run --rm -d -p 8154:8154 --name gocd_server --dns=172.17.32.98 --dns-search=ogmaster.local --add-host infodevops3:10.0.0.3 renatoadsumus/gocd_server:latest',       	
+        command  => 'docker run --rm -d -p 8154:8154 --name gocd_server --dns=172.17.32.98 --dns-search=ogmaster.local -v /opt/gocd_server/artifacts/:/var/lib/go-server/artifacts -v /opt/gocd_server/db/:/var/lib/go-server/db renatoadsumus/gocd_server:latest',       	
 		path => ['/usr/bin',],
 		onlyif  => 'test ! -e /etc/docker/container_gocd_server_execucao.txt',
     }
