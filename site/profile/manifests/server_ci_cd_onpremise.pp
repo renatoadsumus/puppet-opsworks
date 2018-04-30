@@ -1,5 +1,20 @@
 class profile::server_ci_cd_onpremise inherits profile::base{		
 	
+	
+	file{ '/etc/docker/':
+        ensure  => 'directory',
+        require => Package['docker-ce'],
+    }
+	
+	### ALTERANDO O CAMINHO DEFAULT DOCKER PARA OPT
+	file {'daemon.json':
+        ensure => 'file',
+        path => '/etc/docker/daemon.json',
+        content => '{"graph":"/opt/docker/","storage-driver":"overlay","disable-legacy-registry": true}',
+		require  => File['/etc/docker'],
+       
+    }
+	
 	::docker::image { 'renatoadsumus/gocd_server':	
 		ensure    => 'present',
 		image_tag => 'latest',		
