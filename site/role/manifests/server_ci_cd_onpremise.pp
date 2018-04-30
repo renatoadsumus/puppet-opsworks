@@ -5,9 +5,7 @@ class role::server_ci_cd_onpremise {
 	file {[	'/opt/gocd_server/',
 					'/opt/gocd_server/db/',
 					'/opt/gocd_server/artifacts/',]:
-        ensure => 'directory',		
-		#owner  => "go",
-		#group  => "go",		
+        ensure => 'directory',					
 	}
 	
 }
