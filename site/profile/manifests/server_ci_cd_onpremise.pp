@@ -3,7 +3,7 @@ class profile::server_ci_cd_onpremise inherits profile::base{
 	
 	file{ '/etc/docker/':
         ensure  => 'directory',
-        require => Package['docker-ce'],
+        #require => Package['docker-ce'],
     }
 	
 	### ALTERANDO O CAMINHO DEFAULT DOCKER PARA OPT
