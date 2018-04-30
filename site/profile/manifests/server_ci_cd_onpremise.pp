@@ -1,9 +1,8 @@
 class profile::server_ci_cd_onpremise inherits profile::base{		
 	
-	
+	### CRIANDO A PASTA DOCKER DENTRO DA ETC
 	file{ '/etc/docker/':
-        ensure  => 'directory',
-        #require => Package['docker-ce'],
+        ensure  => 'directory',        
     }
 	
 	### ALTERANDO O CAMINHO DEFAULT DOCKER PARA OPT
