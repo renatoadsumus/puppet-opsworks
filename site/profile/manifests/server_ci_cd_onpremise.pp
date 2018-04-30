@@ -14,6 +14,7 @@ class profile::server_ci_cd_onpremise inherits profile::base{
 	::docker::run { 'gocd_server':
 		image   => 'renatoadsumus/gocd_server:latest',
 		ports   => ['8153:8153','8154:8154'],
+		volumes => ['/var/log:/var/lib/go-server/artifacts', '/var/log:/var/lib/go-server/db'],
 		require => Docker::Image['renatoadsumus/gocd_server'],
 		
 	}
