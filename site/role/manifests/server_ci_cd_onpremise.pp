@@ -28,6 +28,6 @@ class role::server_ci_cd_onpremise {
 		}	
 		
 		#https://forums.docker.com/t/no-route-to-host-network-request-from-container-to-host-ip-port-published-from-other-container/39063/5
-		
+		#http://devopslab.com.br/como-instalar-e-configurar-o-puppet-server-puppet-cliente-e-modulos-de-configuracao/
 		### FALTA O systemctl restart firewalld
 }
