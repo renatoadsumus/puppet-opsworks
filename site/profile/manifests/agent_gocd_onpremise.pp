@@ -8,6 +8,7 @@ class profile::agent_gocd_onpremise inherits profile::base{
 	
 	::docker::run { 'gocd_agent':
 		image   => 'renatoadsumus/gocd_agent',		
+		volumes => ['/var/run/docker.sock:/var/run/docker.sock'],
 		require => Docker::Image['renatoadsumus/gocd_agent'],		
 	}	 
 }
