@@ -2,21 +2,15 @@ class profile::agent_gocd_onpremise inherits profile::base{
 	
 	group { 'go':
   			  ensure => 'present',
-  			  gid    => '1000',
-     }
-
-	 group { 'suporte':
-  			  ensure => 'present',
-  			  gid    => '4000',
-     }
+  			  gid    => '2000',
+     }	
 	 
 	user { 'go':
 		  ensure  => 'present',
 		  comment => 'GO User',		 
-		  groups  => ['go','suporte'],
-		  home    => '/home/go',
+		  groups  => ['go','suporte'],		
 		  shell   => '/bin/bash',
-		  uid     => '1001',
+		  uid     => '2001',
 	}
 
 
