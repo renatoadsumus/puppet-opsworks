@@ -1,5 +1,6 @@
 class profile::agent_gocd_onpremise inherits profile::base{		
 	
+	### CRIANDO USUARIO NA VM, EM TODOS DOCKERFILE COMO EXEMPLO GO-AGENT DOCKER RODANDO MAVEN DOCKER TERAO O MESMO GID 2000 E UID 2001 
 	group { 'go':
   			  ensure => 'present',
   			  gid    => '2000',
