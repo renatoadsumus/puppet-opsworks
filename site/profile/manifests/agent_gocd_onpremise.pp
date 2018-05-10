@@ -22,7 +22,10 @@ class profile::agent_gocd_onpremise inherits profile::base{
 	### CRIANDO AS PASTAS PIPELINE PARA GO-AGENT
   file {[	'/opt/gocd_agent/',
 			'/opt/gocd_agent/pipelines/',]:
-        ensure => 'directory',				
+        ensure => 'directory',			
+		group  => 'go',
+		mode   => '644',
+		owner  => 'go',
 	}
 	
 	::docker::run { 'gocd_agent':
