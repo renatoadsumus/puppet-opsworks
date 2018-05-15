@@ -8,7 +8,7 @@ class profile::server_cd {
         ensure => 'directory',					
 	}
 	
-	### RESOLVE O PROBLEMA DOCKER - NO ROUTE TO HOST 
+	### RESOLVE O PROBLEMA DOCKER DOS CONTAINERS NAO PODEREM ACESSAR OUTROS CONTAINERS - NO ROUTE TO HOST - 
 	#file {'/etc/firewalld/zones/public.xml':
 			#ensure => 'file',
 			path => '/etc/firewalld/zones/public.xml',
