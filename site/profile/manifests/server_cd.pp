@@ -11,7 +11,7 @@ class profile::server_cd {
 	### RESOLVE O PROBLEMA DOCKER - NO ROUTE TO HOST 
 	file {'/etc/firewalld/zones/public.xml':
 			ensure => 'file',
-			path => '/etc/firewalld/zones/public_copia.xml',
+			path => '/etc/firewalld/zones/public.xml',
 			content => '<?xml version="1.0" encoding="utf-8"?>
 <zone>
 <short>Public</short>
