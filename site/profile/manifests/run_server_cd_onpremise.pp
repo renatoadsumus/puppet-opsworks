@@ -29,7 +29,7 @@ class profile::run_server_cd_onpremise {
 	::docker::run { 'gocd_server':
 		image   => 'renatoadsumus/gocd_server:18.3.0_0509d6bb3d',
 		ports   => ['8153:8153','8154:8154'],
-		volumes => ['/opt/gocd_server/artifacts/:/var/lib/go-server/artifacts', '/opt/gocd_server/db/:/var/lib/go-server/db', '/opt/gocd_server/cruise-config.xml/:/etc/go/cruise-config.xml'],
+		volumes => ['/opt/gocd_server/artifacts/:/var/lib/go-server/artifacts', '/opt/gocd_server/db/:/var/lib/go-server/db', '/opt/gocd_server/cruise-config.xml/:/etc/go/cruise-config.xml'],		
 		require => Docker::Image['renatoadsumus/gocd_server'],
 		
 	}

@@ -1,6 +1,6 @@
 class profile::run_server_cd_aws {
 
-include profile::install_docker
+include docker::install_docker
   
   exec {'gocd_server':
         command  => 'docker run --rm -d -p 8154:8154 --name gocd_server --dns=172.17.32.98 --dns-search=ogmaster.local -v /opt/gocd_server/artifacts/:/var/lib/go-server/artifacts -v /opt/gocd_server/db/:/var/lib/go-server/db  renatoadsumus/gocd_server:latest',       	

@@ -1,18 +1,29 @@
 class profile::agent_cd {
 
-### CRIANDO PASTA PARA ARMAZENAR BIBLIOTECAS MAVEN - EVITANDO QUE BAIXAR A TODA EXECUÇAO DE UM CONTAINER
-  file {[	'/opt/maven/',
-			'/opt/maven/repository/',
-					]:
-        ensure => 'directory',					
+$user = $role::agent_ci_cd::onpremise::install::user
+$group = $role::agent_ci_cd::onpremise::install::group
+
+ if $group == undef {
+		$user = "go"
+		$group = "go"			
+}
+
+notify{ " Colocando nas pastas para Usuario...:  ${$user} a Grupo...: ${$group}": }
+	
+### CRIANDO NOVA PASTA PARA VOLUMES DE REPOSITORIOS MAVEN E GRAILS DEVIDO A PROBLEMAS DE PERMISSIONAMENTO DAS IMAGENS DOCKER COM GO
+	file { ["/opt/repositories/",
+			"/opt/repositories/maven",
+			"/opt/repositories/grails"]:
+		ensure => "directory",
+		owner  => "${user}",
+		group  => "${group}",
 	}
 	
-### CRIANDO PASTA PARA ARMAZENAR OS ARTEFATOS GERADOS E SER UM VOLUME PARA DinD
-  file {[	'/opt/gocd_agent/',
-			'/opt/gocd_agent/pipelines',
-					]:
-        ensure => 'directory',					
-	}
-
+### CRIANDO A PASTA ARA ARMAZENAR OS ARTEFATOS GERADOS E SER UM VOLUME PARA DinD /OPT/AGENTS/GO-AGENT
+	file{"/opt/agents/":
+		ensure  => "directory",
+		owner   => "${user}",
+		group   => "${group}",		
+	}  
 
 }
