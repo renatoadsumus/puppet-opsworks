@@ -5,7 +5,7 @@ class role {
 class role::server_ci_cd inherits role {
 
 include profile::server_cd
-include profile::agent_cd
+#include profile::agent_cd
 
 }
 
