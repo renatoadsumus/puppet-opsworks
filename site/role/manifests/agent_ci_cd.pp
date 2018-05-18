@@ -22,5 +22,5 @@ include profile::install_agent_cd_onpremise
 class role::agent_ci_cd::onpremise::run inherits role::agent_ci_cd{		
  
 #include profile::run_agent_cd_onpremise
-#include profile::run_agent_cd_onpremise
+#include profile::run_agent_ci_onpremise
 }
