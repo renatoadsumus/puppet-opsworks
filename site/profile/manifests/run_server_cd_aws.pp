@@ -10,7 +10,7 @@ include docker::install_docker
     }
 	
 	exec {'mongodb':
-        command  => 'docker run --rm -d -p 27017:27017 --name mongodb --dns=172.17.32.98 --dns-search=ogmaster.local renatoadsumus/gocd_server:latest',       	
+        command  => 'docker run --rm -d -p 27017:27017 --name mongodb --dns=172.17.32.98 --dns-search=ogmaster.local renatoadsumus/mongodb:latest',       	
 		path => ['/usr/bin',],
 		onlyif  => 'test ! -e /etc/docker/container_gocd_server_execucao.txt',
     }

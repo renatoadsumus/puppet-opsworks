@@ -17,21 +17,14 @@ class profile::run_server_cd_onpremise {
 		</rule>
 </zone>',  
 			
-		}
-		
-		
-### CRIANDO A PASTA DOCKER DENTRO DA ETC
-	file{ '/etc/docker/':
-        ensure  => 'directory',        
-    }
+		}	
+
 	
 ### ALTERANDO O CAMINHO DEFAULT DOCKER PARA OPT
 	file {'daemon.json':
         ensure => 'file',
         path => '/etc/docker/daemon.json',
-        content => '{"graph":"/opt/docker/","storage-driver":"overlay","disable-legacy-registry": true}',
-		require  => File['/etc/docker'],
-       
+        content => '{"graph":"/opt/docker/","storage-driver":"overlay","disable-legacy-registry": true}',       
     }
 	
 	::docker::image { 'renatoadsumus/gocd_server':	

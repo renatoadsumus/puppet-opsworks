@@ -3,16 +3,12 @@ class docker::install_docker{
 	service { 'docker':
         ensure  => running,
         enable  => true,
-        subscribe => [Package['docker'], File['/etc/docker'], File['daemon.json']],
+        subscribe => [Package['docker'], File['daemon.json']],
     }
 
     package{'docker':
         ensure => present,
-   }
-	
-	file{ '/etc/docker':
-        ensure  => 'directory',  				
-    }
+   }	
 	
     file {'daemon.json':
         ensure => 'file',
