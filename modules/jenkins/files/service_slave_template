@@ -1,0 +1,84 @@
+#!/bin/bash
+#
+# chkconfig: 345 94 7
+# description: Starts JENKINS SLAVE NOME_SLAVE
+# process name: NOME_SLAVE
+# Source function library.
+. /etc/init.d/functions
+# Configurado por Tarcisio Antunes 20/07/2017
+
+JENKINSSLAVEID=NOME_SLAVE
+
+getpid() {
+ pid=`ps -ef | grep 'NOME_SLAVE' | grep -v grep | awk '{ print $2 }'`
+}
+
+start() {
+    echo -n  "Starting JENKINS SLAVE - $JENKINSSLAVEID: "
+    getpid
+    if [ -z "$pid" ]; then
+        cd /opt/slaves_jenkins/
+        /usr/bin/sudo -u jenkins -s -b java -jar swarm-client.jar -master http://infodevops1:8080 -labels "$JENKINSSLAVEID" -executors 4 -description "Jenkins Slave" -retryInterval 5 -fsroot "/opt/slaves_jenkins/${JENKINSSLAVEID}" -name "${JENKINSSLAVEID}_slave" -mode "exclusive" -disableClientsUniqueId
+        RETVAL=$?
+    fi
+    if [ $RETVAL -eq 0 ]; then
+        touch /var/lock/subsys/$JENKINSSLAVEID
+        echo_success
+    else
+        echo_failure
+    fi
+    echo
+    return $RETVAL
+}
+
+stop() {
+    echo -n  "Stoping JENKINS SLAVE - $JENKINSSLAVEID: "
+    getpid
+    RETVAL=$?
+    if [ -n "$pid" ]; then
+        kill -9 $pid
+    sleep 6
+    getpid
+    if [ -z "$pid" ]; then
+        rm -f /var/lock/subsys/$JENKINSSLAVEID
+        echo_success
+    else
+        echo_failure
+    fi
+    else
+        echo_failure
+    fi
+    echo
+    return $RETVAL
+}
+
+
+# See how we were called.
+case "$1" in
+  start)
+        start
+        ;;
+  stop)
+        stop
+        ;;
+  status)
+        getpid
+        if [ -n "$pid" ]; then
+                echo "$JENKINSSLAVEID (pid $pid) is running..."
+
+        else
+                RETVAL=1
+                echo "$JENKINSSLAVEID is stopped"
+        fi
+        ;;
+  restart)
+        stop
+        start
+        ;;
+  *)
+        echo $"Usage: $0 {start|stop|status|restart}"
+        exit 1
+        ;;
+esac
+exit $RETVAL
+
