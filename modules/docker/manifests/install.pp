@@ -1,5 +1,5 @@
 class docker::install {    
-
+/*
     service { 'docker':
         ensure  => running,
         enable  => true,
@@ -41,6 +41,7 @@ class docker::install {
         content => '{"graph":"/opt/docker","storage-driver":"overlay","disable-legacy-registry": true}',
         require  => File['/etc/docker'],
     }
+	*/
 
 }
 

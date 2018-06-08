@@ -13,5 +13,9 @@ class profile::server_cd {
 	file{ '/etc/docker/':
         ensure  => 'directory',        
     }
+### CRIANDO PASTA PARA SALVAR OS DADOS DO MONGODB EM VOLUME	
+		file{ '/opt/mongo/data_db':
+        ensure  => 'directory',        
+    }
 	
 }

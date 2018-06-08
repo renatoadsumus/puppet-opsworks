@@ -1,26 +1,28 @@
 class role {
-  include profile::base   
+  #include profile::base   
 }
 
-class role::agent_ci_cd inherits role {
-
+class role::agent_ci inherits role {	
+		
 include profile::slave_ci
-include profile::agent_cd
 
 }
 
-class role::agent_ci_cd::onpremise::install inherits role::agent_ci_cd{
+class role::agent_ci_cd::onpremise::install inherits role::agent_ci{
 
-$user = 'tfsservice'
-$group = 'suporte'
-
+	class {' profile::agent_cd':
+            user_local => 'tfsservice',
+			group_local => 'suporte',		
+    }		
+		
 include profile::install_agent_cd_onpremise
 #include profile::install_agent_ci_onpremise
 
 }
 
-class role::agent_ci_cd::onpremise::run inherits role::agent_ci_cd{		
- 
-#include profile::run_agent_cd_onpremise
+class role::agent_ci_cd::onpremise::run inherits role::agent_ci{	
+
+include profile::agent_cd
+include profile::run_agent_cd_onpremise
 #include profile::run_agent_ci_onpremise
 }

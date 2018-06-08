@@ -29,7 +29,7 @@ class profile::run_server_cd_onpremise {
 	
 	::docker::image { 'renatoadsumus/gocd_server':	
 		ensure    => 'present',
-		image_tag => '18.3.0_0509d6bb3d',		
+		image_tag => 'latest',		
 	}  
 
 
@@ -39,7 +39,7 @@ class profile::run_server_cd_onpremise {
 	} 
 	
 	::docker::run { 'gocd_server':
-		image   => 'renatoadsumus/gocd_server:18.3.0_0509d6bb3d',
+		image   => 'renatoadsumus/gocd_server:latest',
 		ports   => ['8153:8153','8154:8154'],
 		volumes => ['/opt/gocd_server/artifacts/:/var/lib/go-server/artifacts', '/opt/gocd_server/db/:/var/lib/go-server/db', '/opt/gocd_server/cruise-config.xml/:/etc/go/cruise-config.xml'],		
 		require => Docker::Image['renatoadsumus/gocd_server'],
@@ -49,6 +49,7 @@ class profile::run_server_cd_onpremise {
 	::docker::run { 'mongodb':
 		image   => 'renatoadsumus/mongodb:latest',
 		ports   => ['27017:27017'],
+		volumes => ['/opt/mongo/data_db:/data/db'],		
 		require => Docker::Image['renatoadsumus/mongodb'],
   }  
 

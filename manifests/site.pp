@@ -10,10 +10,10 @@ node 'infodevops2.ogmaster.local' {
 
 node 'infodevops3.ogmaster.local'{
 
-	include role::server_ci_cd::onpremise
+	include role::server_ci_cd::onpremise::run
 }
 
 node 'default'{
 
-	include role::server_ci_cd::aws
+	#include role::server_ci_cd::aws::run
 }

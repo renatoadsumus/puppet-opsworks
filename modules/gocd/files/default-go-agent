@@ -1,6 +1,0 @@
-GO_SERVER_URL=https://infogocd.ogmaster.local:8154/go
-export GO_SERVER_URL=https://infogocd.ogmaster.local:8154/go
-AGENT_WORK_DIR=/opt/agents/${SERVICE_NAME:-go-agent}
-export AGENT_WORK_DIR=/opt/agents/${SERVICE_NAME:-go-agent}
-JAVA_HOME=/usr/lib/jvm/java-1.8.0-openjdk
-export JAVA_HOME=/usr/lib/jvm/java-1.8.0-openjdk
