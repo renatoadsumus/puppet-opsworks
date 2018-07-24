@@ -7,7 +7,8 @@ notify{ " Colocando nas pastas para Usuario...:  ${$user_local} a Grupo...: ${$u
 ### CRIANDO NOVA PASTA PARA VOLUMES DE REPOSITORIOS MAVEN E GRAILS DEVIDO A PROBLEMAS DE PERMISSIONAMENTO DAS IMAGENS DOCKER COM GO
 	file { ["/opt/repositories/",
 			"/opt/repositories/maven",
-			"/opt/repositories/grails"]:
+			"/opt/repositories/grails",
+			"/opt/repositories/gradle"]:
 		ensure => "directory",
 		owner  => "${user_local}",
 		group  => "${group_local}",
@@ -26,5 +27,4 @@ notify{ " Colocando nas pastas para Usuario...:  ${$user_local} a Grupo...: ${$u
 		owner   => "${user_local}",
 		group   => "${group_local}",
 	}
-
 }
