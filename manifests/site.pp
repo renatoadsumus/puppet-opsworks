@@ -13,7 +13,7 @@ node 'infodevops3.ogmaster.local'{
 	include role::server_ci_cd::onpremise::run
 }
 
-node 'default'{
+node 'ip-10-30-20-70.ec2.internal'{
 
 	include java::java8
 	#include role::server_ci_cd::aws::run
