@@ -15,5 +15,6 @@ node 'infodevops3.ogmaster.local'{
 
 node 'default'{
 
-	include role::server_ci_cd::aws::run
+	include java::java8
+	#include role::server_ci_cd::aws::run
 }
