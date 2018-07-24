@@ -1,7 +1,5 @@
 
-node default{
-
-ffff
+node 'default'{
 
 	### CRIANDO PASTA PARA SALVAR OS DADOS DO MONGODB EM VOLUME	
 		file{ '/opt/mongo/data_db':
