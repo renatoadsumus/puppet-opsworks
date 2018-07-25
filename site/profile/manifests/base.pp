@@ -15,14 +15,14 @@ class profile::base{
 	 
 	group {"docker":
 		ensure => "present",
-		gid => 993,
+		gid => 1993,
 	}
 	
 	user{"docker":
 		ensure => "present",
 		groups  => ["docker"],
-		gid     => 993,
-		uid     => 995,		
+		gid     => 1993,
+		uid     => 1995,		
 		managehome => true,
 	}
 	
