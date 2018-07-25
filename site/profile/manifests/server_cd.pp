@@ -1,9 +1,9 @@
 class profile::server_cd {	
 
 ### CRIANDO AS PASTAS DB E ARTIFACTS PARA SER VOLUME PARA GO-CD
-  file {[	'/opt/gocd_server/',
-					'/opt/gocd_server/db/',
-					'/opt/gocd_server/artifacts/',]:
+  file {   ['/opt/gocd_server/',
+			'/opt/gocd_server/db/',
+			'/opt/gocd_server/artifacts/',]:
         ensure => 'directory',					
 	}
 		
@@ -14,8 +14,9 @@ class profile::server_cd {
         ensure  => 'directory',        
     }
 ### CRIANDO PASTA PARA SALVAR OS DADOS DO MONGODB EM VOLUME	
-		file{ '/opt/mongo/data_db':
-        ensure  => 'directory',        
+	file{ [	'/opt/mongo/',
+			'/opt/mongo/data_db',]:
+		ensure  => 'directory',        
     }
 	
 }
