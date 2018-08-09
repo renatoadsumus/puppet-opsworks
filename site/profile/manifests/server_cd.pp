@@ -4,7 +4,9 @@ class profile::server_cd {
   file {   ['/opt/gocd_server/',
 			'/opt/gocd_server/db/',
 			'/opt/gocd_server/artifacts/',]:
-        ensure => 'directory',					
+        ensure => 'directory',			
+		owner  => "go",
+		group  => "go"		
 	}
 		
 ### CRIANDO A PASTA DOCKER DENTRO DA ETC PARA ALTERAR CONFIGURACOES DEFAULT 

@@ -1,5 +1,5 @@
 class role {
-  #include profile::base   
+  include java::java8
 }
 
 class role::agent_ci inherits role {	

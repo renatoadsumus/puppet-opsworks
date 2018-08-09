@@ -18,7 +18,7 @@ class role::server_ci_cd::onpremise::run inherits role::server_ci_cd {
 
 class role::server_ci_cd::aws::run inherits role::server_ci_cd {
 
-#include profile::run_server_cd_aws
+include profile::run_server_cd_aws
 #include profile::run_agent_cd_aws
 
 }

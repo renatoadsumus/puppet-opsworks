@@ -22,13 +22,19 @@ class profile::run_agent_cd_onpremise {
 	
 	::docker::run { 'gocd_agent1':
 		image   => 'renatoadsumus/gocd_agent',		
-		volumes => ['/var/run/docker.sock:/var/run/docker.sock','/opt/agents/pipelines:/var/lib/go-agent/pipelines/','/opt/scripts_cd:/opt/scripts_cd'],
+		volumes => ['/var/run/docker.sock:/var/run/docker.sock','/opt/agents/pipelines:/var/lib/go-agent/pipelines/','/opt/scripts_cd:/opt/scripts_cd','/opt/gocd_server:/etc/go'],
 		require => Docker::Image['renatoadsumus/gocd_agent'],		
 	}	
 	
 	::docker::run { 'gocd_agent2':
 		image   => 'renatoadsumus/gocd_agent',		
-		volumes => ['/var/run/docker.sock:/var/run/docker.sock','/opt/agents/pipelines:/var/lib/go-agent/pipelines/','/opt/scripts_cd:/opt/scripts_cd'],
+		volumes => ['/var/run/docker.sock:/var/run/docker.sock','/opt/agents/pipelines:/var/lib/go-agent/pipelines/','/opt/scripts_cd:/opt/scripts_cd','/opt/gocd_server:/etc/go'],
+		require => Docker::Image['renatoadsumus/gocd_agent'],		
+	}
+	
+	::docker::run { 'gocd_agent3':
+		image   => 'renatoadsumus/gocd_agent',		
+		volumes => ['/var/run/docker.sock:/var/run/docker.sock','/opt/agents/pipelines:/var/lib/go-agent/pipelines/','/opt/scripts_cd:/opt/scripts_cd','/opt/gocd_server:/etc/go'],
 		require => Docker::Image['renatoadsumus/gocd_agent'],		
 	}
 
